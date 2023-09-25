@@ -4,16 +4,27 @@
 // }, 5000);
 let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
-ctx.moveTo(0,0);
-ctx.lineTo(200,100);
-ctx.stroke();
-ctx.beginPath();
-ctx.arc(100,100, 50, 0, 2 * Math.PI);
-ctx.strokeStyle = 'red'
-ctx.lineWidth = 3;
-ctx.stroke();
-ctx.font = '30px Arial';
-ctx.fillText('Hello Canvas', 30, 50);
-ctx.strokeText('Hello Canvas', 30, 100);
-ctx.fillStyle = '#ff0';
-ctx.fillRect(10, 10, 10, 10);
+
+let x = 10;
+let y = 10;
+setInterval(() => {
+    ctx.reset();
+    ctx.fillRect(x, y, 30, 30);
+    
+},16);
+
+canvas.addEventListener('keydown', event => {
+    console.log(event);
+    if(event.code == 'KeyW'){
+        y-=5;
+    }
+    if(event.code == 'KeyS'){
+        y+=5;
+    }
+    if(event.code == 'KeyD'){
+        x+=5;
+    }
+    if(event.code == 'KeyA'){
+        x-=5;
+    }
+});
